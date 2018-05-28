@@ -14,6 +14,9 @@ public:
 	void display();
 	CFeet add(CFeet & objf);
 	CFeet operator +(CFeet & objf);
+	void init(int f, int i);
+	CFeet minus(CFeet & doos);
+	CFeet operator -(CFeet & doos);
 };
 void CFeet::setvalue(int f, int i)
 {
@@ -36,13 +39,32 @@ CFeet CFeet::operator+(CFeet & objf)
 	temp.setvalue(feet + objf.feet, inches + objf.inches);
 	return temp;
 }
+void CFeet::init(int f,int i)
+{
+		feet = f - 1;
+		inches = i + 12;
+}
+CFeet CFeet::minus(CFeet & doos)
+{
+	CFeet temp;
+	temp.init(feet - doos.feet, inches - doos.inches);
+	return temp;
+}
+CFeet CFeet::operator-(CFeet & doos)
+{
+	CFeet temp;
+	temp.init(feet - doos.feet, inches - doos.inches);
+	return temp;
+}
 int main()
 {
-	CFeet A,B,C;
-	A.setvalue(10, 8);
+	CFeet A,B,C,D;
+	A.setvalue(10, 2);
 	B.setvalue(7, 6);
 	C = A + B;
 	C.display();
+	D = A - B;
+	D.display();
     return 0;
 }
 
